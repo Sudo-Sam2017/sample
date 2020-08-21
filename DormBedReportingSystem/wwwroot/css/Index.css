@@ -1,0 +1,449 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.firstDiv {
+    background-color: green;
+    height: 300px;
+    width: 300px;
+}
+
+#bedHeader {
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 70px 50px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 74px 73px 70px;
+}
+
+#pageHeader {
+    background-color: Highlight;
+    font-weight: bold;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    color: white;
+}
+
+.fillerBlock {
+}
+
+.bedHeaderCell {
+    height: 50px;
+    width: 74px;
+    background-color: lightblue
+}
+
+.contractOnBoardTable {
+    text-align: left;
+    display: inline-block;
+    overflow: auto;
+    padding-left: 20px;
+    border: 2px solid black;
+    height: 120px;
+    background-color: lightgrey;
+}
+
+.contractStrengthHeader {
+    display: inline-block;
+    text-align: center;
+}
+
+.wrapper {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 30px;
+    -ms-grid-columns: 180px 5px 656px 5px 656px 5px 250px 5px 110px;
+    grid-template-columns: 100px 100px 100px;
+    background-color: #fff;
+    color: #444;
+    padding-bottom: 5px;
+    font-weight: bold;
+    max-width: 800px;
+}
+
+.wrapper2 {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 10px;
+    -ms-grid-columns: 180px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 7px 55px 5px 55px 5px 55px 5px 55px 5px 80px 5px 80px 5px 80px 5px 110px;
+    grid-template-columns: 100px 100px 100px;
+    background-color: #fff;
+    color: #444;
+    font-weight: bold;
+    height: 77px;
+}
+
+.wrapperData {
+/*    display: -ms-grid;
+    display: grid;
+    grid-gap: 30px;
+    -ms-grid-columns: 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 7px 55px 5px 55px 5px 55px 5px 55px 5px 80px 5px 80px 5px 80px 5px 110px;
+    grid-template-columns: 100px 100px 100px;*/
+    background-color: #fff;
+    color: #444;
+    font-weight: bold;
+    display:inline;
+
+}
+
+.totalWrapper {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 30px;
+    -ms-grid-columns: 180px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 7px 55px 5px 55px 5px 55px 5px 55px 5px 80px 5px 80px 5px 80px 5px 110px;
+    grid-template-columns: 100px 100px 100px;
+    background-color: #fff;
+    color: #444;
+    font-weight: bold;
+}
+
+
+.box {
+    background-color: #287aff;
+    color: black;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+    text-align: center;
+    height:65px;
+    padding-top: 10px;
+}
+
+.boxBeds {
+    background-color: #cedcff;
+    /*lighter blue:E9EEFC */
+    color: black;
+    border-radius: 5px;
+    padding-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 2px;
+    display: inline-block;
+    padding-right:5px;
+}
+
+.boxBedsYellow {
+    background-color: #F9F977; /*lighter yellow:FAFAB3*/
+    color: black;
+    border-radius: 5px;
+    padding-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 2px;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.boxBedsDataBlue {
+    background-color: #E2EAFF;
+    /*lighter blue:E9EEFC */
+    color: black;
+    border-radius: 5px;
+    padding-top: 28px;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 2px;
+    display: inline-block;
+    height:45px;
+    padding-right:9px;
+}
+
+.boxBedsDataYellow {
+    background-color: #FAFAB3; /*lighter yellow:FAFAB3*/
+    color: black;
+    border-radius: 5px;
+    padding-top: 28px;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 2px;
+    display: inline-block;
+    height: 45px;
+}
+
+.boxBedsDataGreen {
+    background-color: #DDF1DC; /*lighter yellow:FAFAB3*/
+    color: black;
+    border-radius: 5px;
+    padding-top: 28px;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 2px;
+    display: inline-block;
+    height: 45px;
+}
+
+.boxVacancy {
+    background-color: #BFE5BD; /*#D8FFD6*/
+    color: black;
+    border-radius: 5px;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 10%;
+    text-align: center;
+}
+
+.totalCapacity {
+    font-size: 20px;
+    padding: 0px;
+    text-align: center;
+    align-items: center;
+    padding-top: 21px;
+    background-color: #E2EAFF;
+    color: black;
+    height: 75px;
+}
+
+.totalVacancy {
+    font-size: 20px;
+    padding-top: 35%;
+    text-align: center;
+    background-color: #FAFAB3;
+    color: black;
+    border-radius: 5px;
+    -ms-grid-row: 1;
+    -ms-grid-column: 55;
+}
+
+
+/* in the current spec these would be postioned using auto-placement. For IE we need to set the position of the items. */
+.a {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+}
+
+.b {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+}
+
+.c {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+}
+
+.d {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+}
+
+.e {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+}
+
+.f {
+    -ms-grid-row: 1;
+    -ms-grid-column: 11;
+}
+
+.g {
+    -ms-grid-row: 1;
+    -ms-grid-column: 13;
+}
+
+.h {
+    -ms-grid-row: 1;
+    -ms-grid-column: 15;
+}
+
+.i {
+    -ms-grid-row: 1;
+    -ms-grid-column: 17;
+}
+
+.j {
+    -ms-grid-row: 1;
+    -ms-grid-column: 19;
+}
+
+.k {
+    -ms-grid-row: 1;
+    -ms-grid-column: 21;
+}
+
+.l {
+    -ms-grid-row: 1;
+    -ms-grid-column: 23;
+}
+
+.m {
+    -ms-grid-row: 1;
+    -ms-grid-column: 25;
+}
+
+.n {
+    -ms-grid-row: 1;
+    -ms-grid-column: 27;
+}
+
+.o {
+    -ms-grid-row: 1;
+    -ms-grid-column: 29;
+}
+
+.p {
+    -ms-grid-row: 1;
+    -ms-grid-column: 31;
+}
+
+.q {
+    -ms-grid-row: 1;
+    -ms-grid-column: 33;
+}
+
+.r {
+    -ms-grid-row: 1;
+    -ms-grid-column: 35;
+}
+
+.s {
+    -ms-grid-row: 1;
+    -ms-grid-column: 37;
+}
+
+.t {
+    -ms-grid-row: 1;
+    -ms-grid-column: 39;
+}
+
+.u {
+    -ms-grid-row: 1;
+    -ms-grid-column: 41;
+}
+
+.v {
+    -ms-grid-row: 1;
+    -ms-grid-column: 43;
+}
+
+.w {
+    -ms-grid-row: 1;
+    -ms-grid-column: 45;
+}
+
+.x {
+    -ms-grid-row: 1;
+    -ms-grid-column: 47;
+}
+
+.y {
+    -ms-grid-row: 1;
+    -ms-grid-column: 49;
+}
+
+.z {
+    -ms-grid-row: 1;
+    -ms-grid-column: 51;
+}
+
+.noFurniture {
+    -ms-grid-row: 1;
+    -ms-grid-column: 53;
+}
+
+.editBox {
+    -ms-grid-row: 1;
+    -ms-grid-column: 53;
+    background-color: #d4c419
+}
+
+.editBoxHeader {
+    -ms-grid-row: 1;
+    -ms-grid-column: 55;
+    background-color: #d4c419
+}
+
+accordian {
+    max-width: 600px;
+    display: block;
+    margin: 100px auto;
+}
+
+.accordian .card {
+    box-shadow: 0px 0px 20px #d4d4d4;
+    margin-bottom: 20px;
+    float: left;
+/*    width: 100%;
+*/}
+
+    .accordian .card .card-header h3 {
+        cursor: pointer;
+        color: #ffffff;
+        position: relative;
+        background-color: #cbc9d9;
+        margin: 0;
+        padding: 15px 20px;
+    }
+
+    .accordian .card .card-header {
+        position: relative;
+    }
+
+        .accordian .card .card-header span {
+            position: absolute;
+            right: 20px;
+            top: 12px;
+            height: auto;
+            width: 25px;
+            color: #cbc9d9;
+            background-color: #ffffff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 26px;
+        }
+
+    .accordian .card .card-body {
+        padding-top: 5px;
+    }
+
+    .accordian .card .card-body {
+        display: none;
+    }
+    /*open one card by default*/
+    .accordian .card:nth-child(1) .card-body {
+        display: block;
+    }
+
+    .accordian .card .card-body p {
+        font-size: 15px;
+        line-height: 24px;
+        color: #444444;
+        margin: 0px;
+    }
+
+.wrapper3 {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 30px;
+    -ms-grid-columns: 100px 5px 80px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 5px 55px 7px 55px 5px 55px 5px 55px 5px 55px 5px 80px 5px 80px 5px 80px 5px 110px;
+    grid-template-columns: 100px 100px 100px;
+    background-color: #fff;
+    color: #444;
+    font-weight: bold;
+}
+

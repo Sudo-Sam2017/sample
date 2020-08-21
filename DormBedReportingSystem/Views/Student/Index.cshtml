@@ -1,0 +1,381 @@
+﻿@*@model IEnumerable<DormBedReportingSystem.Models.Students>*@
+@model DormBedReportingSystem.ViewModels.StudentBedViewModel
+@{
+    Layout = null;
+
+}
+
+@{ 
+    List<Beds> bedList = new List<Beds>();
+    int i = 2;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/Index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @*<link href="@Url.Content("~/Views/Student/Index.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/bootstrap-theme.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/bootstrap-theme.min.css")" rel="stylesheet" type="text/css" />*@
+
+
+    <title>Dorm Bed Capactiy Reporting System</title>
+
+</head>
+<body>
+
+    <div id="pageHeader">Dorm Bed Capacity Reporting System</div>
+
+
+    <div style="background-color: gray; margin-left:25px; padding-left:5px; border: 3px solid black; padding-top:5px; font-weight:bold; margin-bottom:30px; text-align:left; height:210px; padding-bottom:5px; width: 1845px">
+        <div style="background-color: lightgrey; height: 30px; border: 3px solid black; width: 99.2%;">
+            <div style="display: inline-block; text-align: left; padding-left: 60px; padding-right: 150px;">
+                Contract Strength
+                @foreach (var student in Model.Students)
+                {
+                    @student.TOTAL_TARGET
+                }
+                as of
+                @foreach (var student in Model.Students)
+                {
+                    @student.AS_OF_TARGET
+                }
+            </div>
+
+            <div style="display: inline-block; text-align: right; padding-left: 500px;">
+                On Board Strength
+                @foreach (var student in Model.Students)
+                {
+                    @student.TOTAL_ACTUAL
+                }
+                as of
+                @foreach (var student in Model.Students)
+                {
+                    @student.AS_OF_ACTUAL
+                }
+            </div>
+        </div>
+
+        <div style="display:inline-block; border: 3px solid black; margin-top: 10px; padding-top: 10px; padding-left: 10px; height: 150px; width: 46%; padding-left: 3%; background-color: lightgrey;">
+            <table width="75%" cellpadding="0" cellspacing="0" border="1">
+                <tr>
+                    <th></th>
+                    <th>Female</th>
+                    <th>Male</th>
+                    <th>Total</th>
+                </tr>
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td style="padding-right:15px;">Resident Student</td>
+                        <td>
+                            @student.RES_STUD_FEMALE
+                        </td>
+                        <td>
+                            @student.RES_STUD_MALE
+                        </td>
+                        <td>
+                            @student.TOTAL_RES_TARGET
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right:15px;">Non Resident Student</td>
+                        <td>
+                            @student.NRES_STUD_FEMALE
+                        </td>
+                        <td>
+                            @student.NRES_STUD_MALE
+                        </td>
+                        <td>
+                            @student.TOTAL_NRES_TARGET
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>
+                            @student.TOTAL_FEM_TARGET
+                        </td>
+                        <td>
+                            @student.TOTAL_MALE_TARGET
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <div style="display:inline-block; padding-top:10px;  border: 3px solid black; height: 150px; width: 46%; margin-left: 10px; padding-left: 3%; background-color: lightgrey;">
+            <table width="75%" cellpadding="0" cellspacing="0" border="1">
+                <tr>
+                    <th></th>
+                    <th>Female</th>
+                    <th>Male</th>
+                    <th>Total</th>
+                </tr>
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td style="padding-right:15px;">Resident Student</td>
+                        <td>
+                            @student.RES_STUD_FEMALE_OBS
+                        </td>
+                        <td>
+                            @student.RES_STUD_MALE_OBS
+                        </td>
+                        <td>
+                            @student.TOTAL_RES_ACTUAL
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right:15px;">Non Resident Student</td>
+                        <td>
+                            @student.NRES_STUD_FEMALE_OBS
+                        </td>
+                        <td>
+                            @student.NRES_STUD_MALE_OBS
+                        </td>
+                        <td>
+                            @student.TOTAL_NRES_ACTUAL
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>
+                            @student.TOTAL_FEM_ACTUAL
+                        </td>
+                        <td>
+                            @student.TOTAL_MALE_ACTUAL
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+
+    </div>
+
+   
+    
+
+    <div class="wrapper">
+        <div style="height:65px; margin: 0 auto" class="box a"><i style="margin-top:10px" class="fa fa-plus-circle fa-2x" onclick="location.href='@Url.Action("Add", "Student")'" title="Add Wing to Building"></i></div>
+        <div class="box b">If you were at full capacity, how many beds would be in this room? Rooms With</div>
+        <div style="background-color: #F6F610" class="box c">Current Occupancy of Rooms</div>
+        <div style="background-color: #75B271" class="box d">If I am not at 100% Occupancy, why not?</div>
+        <div style="background-color: #75B271" class="box e"></div>
+    </div>
+
+    <div class="totalWrapper">
+        <div style="height:65px; background-color: #cbc9d9" class="box a"></div>
+        <div style="padding-left:9px" class="boxBeds b"> 1 bed</div>
+        <div class="boxBeds c"> 2 beds</div>
+        <div class="boxBeds d"> 3 beds</div>
+        <div class="boxBeds e"> 4 beds</div>
+        <div class="boxBeds f"> 5 beds</div>
+        <div class="boxBeds g"> 6 beds</div>
+        <div class="boxBeds h"> 7 beds</div>
+        <div class="boxBeds i"> 8 beds</div>
+        <div class="boxBeds j"> 9 beds</div>
+        <div class="boxBeds k">10 beds</div>
+        <div style="background-color: #cedcff;" class="totalCapacity box l">Total Beds </div>
+        <div style="padding-left:9px" class="boxBedsYellow m">1 bed</div>
+        <div class="boxBedsYellow n">2 beds</div>
+        <div class="boxBedsYellow o">3 beds</div>
+        <div class="boxBedsYellow p">4 beds</div>
+        <div class="boxBedsYellow q">5 beds</div>
+        <div class="boxBedsYellow r">6 beds</div>
+        <div class="boxBedsYellow s">7 beds</div>
+        <div class="boxBedsYellow t">8 beds</div>
+        <div class="boxBedsYellow u">9 beds</div>
+        <div class="boxBedsYellow v">10 beds</div>
+        <div style="background-color:#F9F977" class="totalCapacity box w">Total Beds</div>
+        <div class="boxVacancy x">Vacant Beds (Due to OBS)</div>
+        <div class="boxVacancy y">Vacant Beds (Need Repairs)</div>
+        <div style="-ms-grid-column: 51" class="boxVacancy noFurniture">Vacant Beds due to no furniture</div>
+        <div style="-ms-grid-column: 53" class="box editBoxHeader"></div>
+    </div>
+
+
+
+    <div class="accordian">
+
+        <div class="card">
+            @foreach (var buildingName in Model.Beds.Select(s => s.BLDG_NAME).Distinct())
+            {
+
+                <div class="card-header">
+                    <h3 style="color:black">@buildingName</h3>
+
+
+                    <span class="fa fa-minus"></span>
+                </div>
+                <div class="card-body">
+
+                    @foreach (var wingName in Model.Beds.Where(s => s.BLDG_NAME == buildingName).Select(s => s.WING_NAME))
+                    {
+                        <p>
+                            <div class="wrapper2">
+                                <div style="height:42px; font-size:12px; color:black; background-color: #cbc9d9" class="box a">@wingName</div>
+
+                                @foreach (var bedData in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_1BED))
+                                {
+                                    <div style="padding-left:9px" class="boxBedsDataBlue b">@bedData</div>
+                                }
+                                @foreach (var bedData1 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_2BEDS))
+                                {
+                                    <div class="boxBedsDataBlue c">@bedData1</div>
+                                }
+                                @foreach (var bedData3 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_3BEDS))
+                                {
+                                    <div class="boxBedsDataBlue d">@bedData3</div>
+                                }
+                                @foreach (var bedData4 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_4BEDS))
+                                {
+                                    <div class="boxBedsDataBlue e">@bedData4</div>
+                                }
+                                @foreach (var bedData5 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_5BEDS))
+                                {
+                                    <div class="boxBedsDataBlue f">@bedData5</div>
+                                }
+                                @foreach (var bedData6 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_6BEDS))
+                                {
+                                    <div class="boxBedsDataBlue g">@bedData6</div>
+                                }
+                                @foreach (var bedData7 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_7BEDS))
+                                {
+                                    <div class="boxBedsDataBlue h">@bedData7</div>
+                                }
+                                @foreach (var bedData8 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_8BEDS))
+                                {
+                                    <div class="boxBedsDataBlue i">@bedData8</div>
+                                }
+                                @foreach (var bedData9 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_9BEDS))
+                                {
+                                    <div class="boxBedsDataBlue j">@bedData9</div>
+                                }
+                                @foreach (var bedData10 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_10BEDS))
+                                {
+                                    <div class="boxBedsDataBlue k">@bedData10</div>
+                                }
+                                @foreach (var bedCapTotal in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.CAP_TOTAL))
+                                {
+                                    <div class="boxBedsDataBlue l">@bedCapTotal</div>
+
+                                }
+
+                                @foreach (var bedData11 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_1BED))
+                                {
+                                    <div style="padding-left:9px" class="boxBedsDataYellow m">@bedData11</div>
+                                }
+                                @foreach (var bedData12 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_2BEDS))
+                                {
+                                    <div class="boxBedsDataYellow n">@bedData12</div>
+                                }
+                                @foreach (var bedData13 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_3BEDS))
+                                {
+                                    <div class="boxBedsDataYellow o">@bedData13</div>
+                                }
+                                @foreach (var bedData14 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_4BEDS))
+                                {
+                                    <div class="boxBedsDataYellow p">@bedData14</div>
+                                }
+                                @foreach (var bedData15 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_5BEDS))
+                                {
+                                    <div class="boxBedsDataYellow q">@bedData15</div>
+                                }
+                                @foreach (var bedData16 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_6BEDS))
+                                {
+                                    <div class="boxBedsDataYellow r">@bedData16</div>
+                                }
+                                @foreach (var bedData17 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_7BEDS))
+                                {
+                                    <div class="boxBedsDataYellow s">@bedData17</div>
+                                }
+                                @foreach (var bedData18 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_8BEDS))
+                                {
+                                    <div class="boxBedsDataYellow t">@bedData18</div>
+                                }
+                                @foreach (var bedData19 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_9BEDS))
+                                {
+                                    <div class="boxBedsDataYellow u">@bedData19</div>
+                                }
+                                @foreach (var bedData20 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_10BEDS))
+                                {
+                                    <div class="boxBedsDataYellow v">@bedData20</div>
+                                }
+                                @foreach (var bedOccTotal in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.OCC_TOTAL))
+                                {
+                                    <div class="boxBedsDataYellow w">@bedOccTotal</div>
+                                }
+                                @foreach (var vacancy in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.VB_OBS))
+                                {
+                                    <div class="boxBedsDataGreen x">@vacancy</div>
+
+                                }
+                                @foreach (var vacancy2 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.VB_REPAIR))
+                                {
+                                    <div class="boxBedsDataGreen y">@vacancy2</div>
+
+                                }
+                                @foreach (var vacancy3 in Model.Beds.Where(s => s.WING_NAME == wingName).Select(s => s.VB_NOFURNITURE))
+                                {
+                                    <div class="boxBedsDataGreen z">@vacancy3</div>
+
+                                }
+
+
+                                <div style="height:43px;" class="box noFurniture editBox">
+                                    <i onclick="location.href='@Url.Action("ReadEdit", "Student", new { id = i })'" class="fa fa-edit" title="Edit Wing"></i>
+                                    <i onclick="location.href='@Url.Action("DeleteRow", "Student", new { id = i })'" class="fa fa-trash" title="Delete Wing"></i>
+                                </div>
+                            </div>
+                        </p>
+                        i++;
+                    }
+                </div>
+
+            }
+
+
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".card-header").click(function () {
+                // self clicking close
+                if ($(this).next(".card-body").hasClass("active")) {
+
+                }
+
+                $(".card .card-body").slideUp()
+                $(".card .card-header span").removeClass("fa-minus").addClass("fa-plus");
+                $(this).next(".card-body").addClass("active").slideDown()
+                $(this).children("span").removeClass("fa-plus").addClass("fa-minus")
+
+            });
+
+
+
+        });
+
+        function getSelected() {
+            var buildingDropDown = document.getElementById('buildingSelect');
+            var selectedValue = buildingDropDown.options[buildingDropDown.selectedIndex].value;
+            document.getElementById('selectedBuilding').value = selectedValue;
+
+        }
+    </script>
+</body>
+</html>

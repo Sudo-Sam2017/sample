@@ -1,0 +1,299 @@
+﻿@model DormBedReportingSystem.ViewModels.StudentBedViewModel
+
+
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+
+        body {
+            background-color: #FFFFF3;
+        
+        }
+
+        .wide {
+            width: 60px;
+        }
+
+        .commentsArea {
+            width: 550px;
+            height: 80px;
+        }
+
+        .demo {
+            border: 1px solid #C0C0C0;
+            border-collapse: collapse;
+            padding: 5px;
+            margin-bottom: 100px;
+            width: 500px;
+        }
+
+        .buildingWing {
+            border: 1px solid #C0C0C0;
+            border-collapse: collapse;
+            padding: 5px;
+            width: 500px;
+            margin-bottom:50px;
+        }
+
+        #fullCapacityBeds th{
+            background-color: #287aff;
+            font-size:19px;
+        }
+
+        #currentCapacityBeds th{
+            background-color: yellow;
+            font-size:19px;
+        }
+
+            .demo th {
+                border: 1px solid #C0C0C0;
+                padding: 5px;
+                background: #F0F0F0;
+            }
+
+            .demo td {
+                border: 1px solid #C0C0C0;
+                padding: 5px;
+            }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("AddNewRow", "Student", FormMethod.Post))
+    {
+        <table class="buildingWing">
+            <thead>
+                <tr>
+                    <th>Building Name</th>
+                    <th>Wing Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @{var distinctBuildings = Model.Beds.Select(s => s.BLDG_NAME).Distinct();
+                        }
+
+                        <select onchange="getSelected()" id="buildingSelect">
+                            <option value="0">-- Select a Building --</option>
+
+                            @foreach (var bldgOption in distinctBuildings)
+                            {
+                                <option>@bldgOption</option>
+                            }
+                        </select>
+
+                        @Html.TextBoxFor(m => Model.AddRow.BLDG_NAME, new { @required = "required", id = "txtBuildingName", style = "display:none" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.WING_NAME, new { @required = "required" })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <table id="fullCapacityBeds" class="demo">
+            <caption>Full Capacity Beds</caption>
+            <thead>
+                <tr>
+                    <th>1 Bed</th>
+                    <th>2 Beds</th>
+                    <th>3 Beds</th>
+                    <th>4 Beds</th>
+                    <th>5 Beds</th>
+                    <th>6 Beds</th>
+                    <th>7 Beds</th>
+                    <th>8 Beds</th>
+                    <th>9 Beds</th>
+                    <th>10 Beds</th>
+                    <th>Total</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_1BED, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_2BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_3BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_4BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_5BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_6BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_7BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_8BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_9BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.CAP_10BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        <input readonly class="wide" id="CAP_Total" type="text" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="currentCapacityBeds" class="demo">
+            <caption>Current Occupancy Beds</caption>
+            <thead>
+                <tr>
+                    <th>1 Bed</th>
+                    <th>2 Beds</th>
+                    <th>3 Beds</th>
+                    <th>4 Beds</th>
+                    <th>5 Beds</th>
+                    <th>6 Beds</th>
+                    <th>7 Beds</th>
+                    <th>8 Beds</th>
+                    <th>9 Beds</th>
+                    <th>10 Beds</th>
+                    <th>Total</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_1BED, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_2BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_3BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_4BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_5BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_6BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_7BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_8BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_9BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => Model.AddRow.OCC_10BEDS, new { @onblur = "updateTotal()", @required = "required", @class = "wide" })
+                    </td>
+                    <td>
+                        <input readonly class="wide" id="OCC_Total" type="text" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input id="Submit" type="submit" value="Add" />
+
+        <p style="color:red" id="errorMessage">Please explain why Occupancy exceeds Capacity</p>
+        @Html.TextAreaFor(m => Model.AddRow.BedComments, new { onblur = "validateText()", style = "display:none", @class = "commentsArea" })
+
+
+    }
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    function getSelected() {
+        var buildingDropDown = document.getElementById('buildingSelect');
+        var selectedValue = buildingDropDown.options[buildingDropDown.selectedIndex].value;
+        document.getElementById('txtBuildingName').value = selectedValue;
+    };
+
+    function updateTotal() {
+        var occ_1bed = parseInt(document.getElementById('AddRow_OCC_1BED').value) * 1;
+        var occ_2bed = parseInt(document.getElementById('AddRow_OCC_2BEDS').value) * 2;
+        var occ_3bed = parseInt(document.getElementById('AddRow_OCC_3BEDS').value) * 3;
+        var occ_4bed = parseInt(document.getElementById('AddRow_OCC_4BEDS').value) * 4;
+        var occ_5bed = parseInt(document.getElementById('AddRow_OCC_5BEDS').value) * 5;
+        var occ_6bed = parseInt(document.getElementById('AddRow_OCC_6BEDS').value) * 6;
+        var occ_7bed = parseInt(document.getElementById('AddRow_OCC_7BEDS').value) * 7;
+        var occ_8bed = parseInt(document.getElementById('AddRow_OCC_8BEDS').value) * 8;
+        var occ_9bed = parseInt(document.getElementById('AddRow_OCC_9BEDS').value) * 9;
+        var occ_10bed = parseInt(document.getElementById('AddRow_OCC_10BEDS').value) * 10;
+
+        var occTotal = occ_1bed + occ_2bed + occ_3bed + occ_4bed + occ_5bed + occ_6bed + occ_7bed + occ_8bed + occ_9bed + occ_10bed;
+        document.getElementById("OCC_Total").value = occTotal;
+
+        var cap_1bed = parseInt(document.getElementById('AddRow_CAP_1BED').value) * 1;
+        var cap_2bed = parseInt(document.getElementById('AddRow_CAP_2BEDS').value) * 2;
+        var cap_3bed = parseInt(document.getElementById('AddRow_CAP_3BEDS').value) * 3;
+        var cap_4bed = parseInt(document.getElementById('AddRow_CAP_4BEDS').value) * 4;
+        var cap_5bed = parseInt(document.getElementById('AddRow_CAP_5BEDS').value) * 5;
+        var cap_6bed = parseInt(document.getElementById('AddRow_CAP_6BEDS').value) * 6;
+        var cap_7bed = parseInt(document.getElementById('AddRow_CAP_7BEDS').value) * 7;
+        var cap_8bed = parseInt(document.getElementById('AddRow_CAP_8BEDS').value) * 8;
+        var cap_9bed = parseInt(document.getElementById('AddRow_CAP_9BEDS').value) * 9;
+        var cap_10bed = parseInt(document.getElementById('AddRow_CAP_10BEDS').value) * 10;
+
+        var capTotal = cap_1bed + cap_2bed + cap_3bed + cap_4bed + cap_5bed + cap_6bed + cap_7bed + cap_8bed + cap_9bed + cap_10bed;
+        document.getElementById("CAP_Total").value = capTotal;
+
+        var textArea = document.getElementById('AddRow_BedComments');
+
+        if (occTotal > capTotal) {
+            textArea.style.display = "block";
+            var submitBtn = document.getElementById("Submit")
+            submitBtn.disabled = true;
+            var errorMessage = document.getElementById("errorMessage")
+            errorMessage.hidden = false;
+        }
+        else {
+            textArea.style.display = "none";
+            textArea.value = ""
+            var submitBtn = document.getElementById("Submit")
+            submitBtn.disabled = false;
+            var errorMessage = document.getElementById("errorMessage")
+            errorMessage.hidden = true;
+        }
+
+    }
+
+    function validateText() {
+        var textAreaValue = document.getElementById('AddRow_BedComments').value;
+        if (!textAreaValue) {
+            var submitBtn = document.getElementById("Submit")
+            submitBtn.disabled = true;
+            var errorMessage = document.getElementById("errorMessage")
+            errorMessage.hidden = false;
+        }
+        else {
+            var submitBtn = document.getElementById("Submit")
+            submitBtn.disabled = false;
+            var errorMessage = document.getElementById("errorMessage")
+            errorMessage.hidden = true;
+        }
+
+    }
+
+</script>
